@@ -1,0 +1,106 @@
+
+
+
+.main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+
+.logo-container {
+    display: flex;
+    margin-top: 3rem;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 4rem;
+}
+
+/* Animación de rotación para los círculos de la letra A */
+.logo-container svg .letter-a {
+    animation: rotateBlock 2s ease-in-out infinite;
+    transform-origin: 78px 22px;
+}
+
+/* Animación de rotación para los círculos de la letra D */
+.logo-container svg .letter-d {
+    animation: rotateBlock 2s ease-in-out infinite;
+    transform-origin: 168px 30px;
+}
+
+/* Contenedor para los círculos de la letra A */
+.logo-container svg .letter-a.dot-1,
+.logo-container svg .letter-a.dot-2,
+.logo-container svg .letter-a.dot-3,
+.logo-container svg .letter-a.dot-4 {
+    animation: rotateBlockA 2s ease-in-out infinite;
+    transform-origin: 78px 22px;
+}
+
+/* Contenedor para los círculos de la letra D */
+.logo-container svg .letter-d.dot-1,
+.logo-container svg .letter-d.dot-2,
+.logo-container svg .letter-d.dot-3,
+.logo-container svg .letter-d.dot-4 {
+    animation: rotateBlockD 2s ease-in-out infinite;
+    transform-origin: 168px 30px;
+}
+
+/* Animación de rotación en bloque para letra A */
+@keyframes rotateBlockA {
+    0% {
+        transform: rotate(0deg);
+    }
+    25% {
+        transform: rotate(-15deg);
+    }
+    50% {
+        transform: rotate(0deg);
+    }
+    75% {
+        transform: rotate(15deg);
+    }
+    100% {
+        transform: rotate(0deg);
+    }
+}
+
+/* Animación de rotación en bloque para letra D */
+@keyframes rotateBlockD {
+    0% {
+        transform: rotate(0deg);
+    }
+    25% {
+        transform: rotate(-15deg);
+    }
+    50% {
+        transform: rotate(0deg);
+    }
+    75% {
+        transform: rotate(15deg);
+    }
+    100% {
+        transform: rotate(0deg);
+    }
+}
+
+/* Animación de rotación izquierda-derecha */
+@keyframes rotateBlock {
+    0% {
+        transform: rotate(0deg);
+    }
+    25% {
+        transform: rotate(-15deg);
+    }
+    50% {
+        transform: rotate(0deg);
+    }
+    75% {
+        transform: rotate(15deg);
+    }
+    100% {
+        transform: rotate(0deg);
+    }
+}

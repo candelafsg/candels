@@ -1,0 +1,47 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+:root {
+
+  font-family: font,poppins;
+  line-height: 1.5;
+
+  --background: #F6F5F0;
+  --text: #333333;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+}
+
+/* fonts */
+@font-face {
+  font-family: 'font';
+  src: url('./fonts/Alata-Regular.ttf');
+}
+
+
+
+
+body {
+  background-color: var(--background);
+  color: var(--text);
+
+}
+
+li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+
