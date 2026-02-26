@@ -4,12 +4,11 @@ import { dbProjects } from '../../db/db.js'
 import { CustomTitles } from '../../components/custom-titles/CustomTitles.jsx'
 import { Header } from '../../components/header/Header.jsx'
 import { useState } from 'react'
-import {DropdownButton} from '../../components/buttons/DropDownButton.jsx'
 import { CircleChevronLeft } from 'lucide-react';
 import { IconButton } from '../../components/buttons/IconButton.jsx';
 import { useNavigate } from 'react-router'
-import { CircleArrowRight } from 'lucide-react';
-import { CircleArrowLeft } from 'lucide-react';
+import { div } from 'framer-motion/client'
+
 
 
 const Project = () => {
@@ -31,18 +30,7 @@ const Project = () => {
     )
   }
 
-  // Funciones para navegar el slider
-  const nextImage = () => {
-    setCurrentImageIndex((prevIndex) =>
-      prevIndex === project.images.length - 1 ? 0 : prevIndex + 1
-    )
-  }
 
-  const prevImage = () => {
-    setCurrentImageIndex((prevIndex) =>
-      prevIndex === 0 ? project.images.length - 1 : prevIndex - 1
-    )
-  }
 
 
   const handleBack = () => {
@@ -55,57 +43,39 @@ const Project = () => {
       <div className="project-back">
         <IconButton icon={<CircleChevronLeft />} onClick={handleBack}>VOLVER</IconButton>
       </div>
-      <CustomTitles >{project.name}</CustomTitles>
+      {/* <CustomTitles >{project.name}</CustomTitles> */}
       <main className="main-project">
-        {/* Slider de imágenes */}
-        <div className="project-images">
-          {project.images && project.images.length > 0 ? (
-            <div className="slider-container">
-              <div className="slider">
-                <img
-                  src={project.images[currentImageIndex]}
-                  alt={`${project.name} - Imagen ${currentImageIndex + 1}`}
-                  className="slider-image"
-                />
-              </div>
 
-              {/* Botones de navegación */}
-              <button className="slider-btn prev-btn" onClick={prevImage}>
-                <CircleArrowLeft size={32}/>
-              </button>
-              <button className="slider-btn next-btn" onClick={nextImage}>
-               
-                <CircleArrowRight size={32}/>
-              </button>
+        <section className="frontpage-container">
+            <img className='frontpage-img' src={project.frontPage} alt="portada" />
 
-              {/* Indicadores */}
-              <div className="slider-dots">
-                {project.images.map((_, index) => (
-                  <button
-                    key={index}
-                    className={`dot ${index === currentImageIndex ? 'active' : ''}`}
-                    onClick={() => setCurrentImageIndex(index)}
-                  />
-                ))}
-              </div>
+
+            <div className="project-header">
+              <ul className="project-ul">
+                <li className="project-li">SKILLS</li>
+                <li className="project-li">LINK</li>
+              </ul>
             </div>
-          ) : (
-            <div className="no-images">
-              <p>No hay imágenes disponibles para este proyecto</p>
+
+            <div className="project-info-container">
+              <h2 className='project-txt title'>{project.name}</h2>
+              <p className='project-txt'>{project.description}</p>
             </div>
-          )}
-        </div>
-       
-        <section className='peoject-info'>
-
-
-          
-       <div className="info-1">  <DropdownButton options={project.skills}>SKILLS</DropdownButton></div>
-         
-        
-        <div className="info-2"><DropdownButton options={project.description}>DESCRIPCIÓN</DropdownButton></div>
-       <div className="info-3"><DropdownButton options={project.link}>LINK</DropdownButton></div>
         </section>
+
+
+        <section className="preview-section">
+          <h2>PREVIEW</h2>
+
+          <div className="preview-gallery">
+            {project.images.map((image, index) => (
+              <div className="preview-img-container">
+              <img  className="preview-img" key={index} src={image} alt={`image-${index}`} />
+            </div>
+            ))}
+          </div>
+        </section>
+       
       </main>
     </div>
   )
