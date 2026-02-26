@@ -1,0 +1,180 @@
+.lightbox-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  opacity: 0;
+  animation: fadeIn 0.3s ease-out forwards;
+}
+
+.lightbox-content {
+  background: var(--background);
+  border-radius: 16px;
+  padding: 2rem;
+  
+  width: 85%;
+  position: relative;
+  transform: scale(0.9);
+  animation: scaleIn 0.3s ease-out forwards;
+  animation-delay: 0.1s;
+  overflow-y: auto;
+}
+
+.lightbox-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: var(--text);
+  padding: 0.5rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  z-index: 10;
+}
+
+.lightbox-close:hover {
+  background: rgba(0, 0, 0, 0.1);
+  transform: scale(1.1);
+}
+
+.close-icon {
+  animation: rotateIn 0.3s ease-out forwards;
+}
+
+@keyframes rotateIn {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(90deg);
+  }
+}
+
+.lightbox-header {
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.lightbox-header h2 {
+  margin: 0;
+  color: var(--text);
+  font-size: 1.8rem;
+  font-weight: 600;
+}
+
+.lightbox-body {
+  color: var(--text);
+  line-height: 1.6;
+}
+
+.lightbox-body ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.lightbox-body li {
+  padding: 0.5rem 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  opacity: 0;
+  animation: slideUpFade 0.4s ease-out forwards;
+}
+
+.lightbox-body li:nth-child(1) {
+  animation-delay: 0.2s;
+}
+
+.lightbox-body li:nth-child(2) {
+  animation-delay: 0.3s;
+}
+
+.lightbox-body li:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+.lightbox-body li:nth-child(4) {
+  animation-delay: 0.5s;
+}
+
+.lightbox-body li:nth-child(5) {
+  animation-delay: 0.6s;
+}
+
+.lightbox-body a {
+  color: var(--text);
+  text-decoration: none;
+  display: block;
+  padding: 0.5rem;
+  border-radius: 8px;
+  transition: background-color 0.2s ease;
+}
+
+.lightbox-body a:hover {
+  background: rgba(0, 0, 0, 0.05);
+}
+
+.lightbox-body p {
+  margin: 0;
+  padding: 1rem;
+  text-align: center;
+  opacity: 0;
+  animation: slideUpFade 0.4s ease-out forwards;
+  animation-delay: 0.2s;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    transform: scale(0.9);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes slideUpFade {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .lightbox-content {
+    margin: 1rem;
+    padding: 1.5rem;
+    min-width: auto;
+  }
+  
+  .lightbox-header h2 {
+    font-size: 1.5rem;
+  }
+}

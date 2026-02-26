@@ -5,11 +5,18 @@ import { CustomTitles } from '../../components/custom-titles/CustomTitles.jsx'
 import { Header } from '../../components/header/Header.jsx'
 import { useState } from 'react'
 import {DropdownButton} from '../../components/buttons/DropDownButton.jsx'
+import { CircleChevronLeft } from 'lucide-react';
+import { IconButton } from '../../components/buttons/IconButton.jsx';
+import { useNavigate } from 'react-router'
+import { CircleArrowRight } from 'lucide-react';
+import { CircleArrowLeft } from 'lucide-react';
+
 
 const Project = () => {
 
 
   const { pid } = useParams()
+  const navigate = useNavigate()
 
   const project = dbProjects.find(p => p.id === parseInt(pid))
 
@@ -37,9 +44,17 @@ const Project = () => {
     )
   }
 
+
+  const handleBack = () => {
+    navigate('/portfolio')
+  }
   return (
     <div>
       <Header />
+
+      <div className="project-back">
+        <IconButton icon={<CircleChevronLeft />} onClick={handleBack}>VOLVER</IconButton>
+      </div>
       <CustomTitles >{project.name}</CustomTitles>
       <main className="main-project">
         {/* Slider de imágenes */}
@@ -56,10 +71,11 @@ const Project = () => {
 
               {/* Botones de navegación */}
               <button className="slider-btn prev-btn" onClick={prevImage}>
-                &#10094;
+                <CircleArrowLeft size={32}/>
               </button>
               <button className="slider-btn next-btn" onClick={nextImage}>
-                &#10095;
+               
+                <CircleArrowRight size={32}/>
               </button>
 
               {/* Indicadores */}

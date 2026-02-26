@@ -5,6 +5,7 @@ import Inicio from "../pages/inicio/Inicio";
 import Home from "../pages/home/Home";
 import Portfolio from "../pages/portfolio/Portfolio";
 import Project from "../pages/project/Project";
+import Contact from "../pages/contact/Contact";
 
 
 
@@ -33,8 +34,12 @@ const router = createBrowserRouter([{
         {
             path: "/project/:pid",
             element: <Project />
+        },
+        {
+            path: "/contact",
+            element: <Contact />
         }
-
+        
 
       
         

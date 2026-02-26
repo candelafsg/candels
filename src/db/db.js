@@ -1,7 +1,7 @@
 export const dbProjects = [
     {
         id: 1,
-        name: 'Espaco Akaal',
+        name: 'Espacio Akaal',
         description: 'Proyecto web',
         skills: ['React', 'Node.js', 'Figma'],
         link: 'https://espacoakaal.com',
