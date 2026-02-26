@@ -10,3 +10,31 @@
     width: 20%;
     
 }
+
+.header-logo-desk{
+    display: none;
+}
+
+
+.header-ul{
+    width: 100%;
+    display: flex;
+    gap: 1rem;
+justify-content: end;}
+
+
+@media screen and (min-width: 1024px) {
+    .header-logo {
+        display: none;
+    }
+
+    .header{
+        display: flex;
+        justify-content: center;
+    }
+    
+    .header-logo-desk {
+        display: block;
+        width: 90%;
+    }
+}
