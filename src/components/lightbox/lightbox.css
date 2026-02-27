@@ -14,7 +14,6 @@
 }
 
 .lightbox-content {
-  background: var(--background);
   border-radius: 16px;
   padding: 2rem;
   
@@ -50,6 +49,7 @@
 
 .close-icon {
   animation: rotateIn 0.3s ease-out forwards;
+  color: var(--background);
 }
 
 @keyframes rotateIn {
@@ -167,6 +167,89 @@
   }
 }
 
+/* Estilos para el slider del lightbox */
+.lightbox-slider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin: 1rem 0;
+  position: relative;
+  height: 70vh;
+}
+
+.lightbox-image-container {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+height: 90vh; 
+  overflow: hidden;
+}
+
+.lightbox-image {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.lightbox-nav-btn {
+  border: none;
+  background:transparent;
+  color: var(--background);
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  z-index: 5;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.lightbox-nav-btn:hover {
+  background: rgba(0, 0, 0, 0.7);
+  transform: translateY(-50%) scale(1.1);
+}
+
+.lightbox-nav-btn.prev-btn {
+  left: 1rem;
+}
+
+.lightbox-nav-btn.next-btn {
+  right: 1rem;
+  
+}
+
+.lightbox-dots {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.lightbox-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 10px;
+  border: none;
+ background-color: var(--background);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.lightbox-dot.active {
+  background: var(--background);
+width: 20px;}
+
+
+
 @media screen and (max-width: 768px) {
   .lightbox-content {
     margin: 1rem;
@@ -176,5 +259,22 @@
   
   .lightbox-header h2 {
     font-size: 1.5rem;
+  }
+  
+  .lightbox-nav-btn {
+    width: 40px;
+    height: 40px;
+  }
+  
+  .lightbox-nav-btn.prev-btn {
+    left: 0.5rem;
+  }
+  
+  .lightbox-nav-btn.next-btn {
+    right: 0.5rem;
+  }
+  
+  .lightbox-image-container {
+    max-height: 60vh;
   }
 }

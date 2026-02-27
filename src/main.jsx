@@ -8,7 +8,9 @@ createRoot(document.getElementById('root')).render(
 
   <StrictMode>
 
-    <RouterProvider router={router} />
+    <div translate="no">
+      <RouterProvider router={router} />
+    </div>
 
   </StrictMode>,
 )

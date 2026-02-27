@@ -108,6 +108,12 @@
 .preview-img-container{
     width: 35%;
     flex-shrink: 0;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.preview-img-container:hover {
+    transform: scale(1.02);
 }
 
 .preview-img{

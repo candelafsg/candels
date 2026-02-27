@@ -36,11 +36,7 @@ export const LightboxModal = ({ isOpen, onClose, title, children }) => {
           <CircleX className="close-icon" size={24} />
         </button>
         
-        {title && (
-          <div className="lightbox-header">
-            <h2>{title}</h2>
-          </div>
-        )}
+     
         
         <div className="lightbox-body">
           {children}

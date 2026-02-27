@@ -41,9 +41,15 @@ body {
   font-family: 'font', 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif !important;
 }
 
-/* Forzar tipografía en todos los elementos */
+/* Clase para evitar traducción automática */
+.no-translate {
+  translate: no;
+}
+
+/* Forzar que todos los elementos no sean traducibles y usen la tipografía */
 * {
-  font-family: inherit !important;
+  translate: no !important;
+  font-family: 'font', 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif !important;
 }
 
 h1, h2, h3, h4, h5, h6 {
