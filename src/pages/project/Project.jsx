@@ -173,7 +173,9 @@ const Project = () => {
       <main className="main-project">
 
         <section className="frontpage-container">
-            <img className='frontpage-img' src={project.frontPage} alt="portada" />
+            {project.frontPage && (
+              <img className='frontpage-img' src={project.frontPage} alt="portada" />
+            )}
 
 
             <div className="project-header">
@@ -211,8 +213,8 @@ const Project = () => {
 
           <div className="preview-gallery">
             {project.images.map((image, index) => (
-              <div className="preview-img-container" onClick={() => openLightbox(index)}>
-              <img className="preview-img" key={index} src={image} alt={`image-${index}`} />
+              <div key={index} className="preview-img-container" onClick={() => openLightbox(index)}>
+              <img className="preview-img" src={image} alt={`image-${index}`} />
             </div>
             ))}
           </div>
