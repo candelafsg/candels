@@ -192,9 +192,12 @@ const handleSubmit = async (e) => {
                     openForm && (
                         <div className={`contact-form-overlay ${isClosing ? 'closing' : ''}`}>
                             <div className={`contact-form-container ${isClosing ? 'closing' : ''}`}>
-                                <button className="close-button" style={{display:'flex', justifyContent:'center'
-                                }} onClick={handleCloseForm}></button>
-                                <div className="close-handle" onClick={handleCloseForm}></div>
+                                <button className="close-button" 
+                              onClick={handleCloseForm}></button>
+
+
+                                <div className="handle-container">
+                                <div className="close-handle" onClick={handleCloseForm}></div></div>
 
                                 <div className="form-title-cont">
                                     <h1 className="form-title-cont">Un buen proyecto, comienza aquí</h1>

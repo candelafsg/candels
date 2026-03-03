@@ -78,6 +78,12 @@ body:has(.contact-form-overlay:not(.closing)) {
     animation: slideDown 0.4s ease-out forwards;
 }
 
+.handle-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .close-handle {
     width: 40px;
     height: 4px;
@@ -202,10 +208,12 @@ body:has(.contact-form-overlay:not(.closing)) {
     align-items: center;
     padding: 1rem 0;
     gap: 1rem;
-    background: var(--background);
     position: sticky;
+    background-color: var(--background);
     bottom: 0;
     z-index: 10;
+    flex: 1;
+    justify-content: center;
 }
 
 .submit-button {
