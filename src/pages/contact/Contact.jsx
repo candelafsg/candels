@@ -11,9 +11,9 @@ const Contact = () => {
         <Header />
         <CustomTitles>CONTACTO</CustomTitles>
 
-        <div className="contact-image">
+        {/* <div className="contact-image">
             <img src="#" alt="img" />
-        </div>
+        </div> */}
 
          <div className="info-1">  <DropdownButton options='candelafsg@gmail.com'>EMAIL</DropdownButton></div>
          

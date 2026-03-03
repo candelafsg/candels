@@ -26,6 +26,13 @@ const Project = () => {
   // Estados para el lightbox modal
   const [isLightboxOpen, setIsLightboxOpen] = useState(false)
   const [lightboxImageIndex, setLightboxImageIndex] = useState(0)
+  const [isImageTransitioning, setIsImageTransitioning] = useState(false)
+  
+  // Estado para controlar qué información mostrar en el project-info-container
+  const [activeSection, setActiveSection] = useState('default')
+  
+  // Estado para controlar las animaciones
+  const [isAnimating, setIsAnimating] = useState(false)
 
   if (!project) {
     return (
@@ -53,16 +60,108 @@ const Project = () => {
   }
 
   const nextLightboxImage = () => {
-    setLightboxImageIndex((prevIndex) =>
-      prevIndex === project.images.length - 1 ? 0 : prevIndex + 1
-    )
+    setIsImageTransitioning(true)
+    setTimeout(() => {
+      setLightboxImageIndex((prevIndex) =>
+        prevIndex === project.images.length - 1 ? 0 : prevIndex + 1
+      )
+      setTimeout(() => {
+        setIsImageTransitioning(false)
+      }, 50)
+    }, 300)
   }
 
   const prevLightboxImage = () => {
-    setLightboxImageIndex((prevIndex) =>
-      prevIndex === 0 ? project.images.length - 1 : prevIndex - 1
-    )
+    setIsImageTransitioning(true)
+    setTimeout(() => {
+      setLightboxImageIndex((prevIndex) =>
+        prevIndex === 0 ? project.images.length - 1 : prevIndex - 1
+      )
+      setTimeout(() => {
+        setIsImageTransitioning(false)
+      }, 50)
+    }, 300)
   }
+
+  // Función para obtener el contenido según la sección activa
+  const getInfoContent = () => {
+    switch (activeSection) {
+      case 'skills':
+        return {
+          subtitle: 'SKILLS',
+          content: project.skills.join(' • ')
+        }
+      case 'link':
+        return {
+          subtitle: 'LINK',
+          content: project.link
+        }
+      default:
+        return {
+          subtitle: '',
+          content: project.description2
+        }
+    }
+  }
+
+  const infoContent = getInfoContent()
+
+  // Función para manejar el cambio de sección con animación
+  const handleSectionChange = (section) => {
+    if (section !== activeSection) {
+      setIsAnimating(true)
+      setTimeout(() => {
+        setActiveSection(section)
+        setTimeout(() => {
+          setIsAnimating(false)
+        }, 50)
+      }, 200)
+    }
+  }
+
+  // Estados para el swipe gesture
+  const [touchStart, setTouchStart] = useState(null)
+  const [touchEnd, setTouchEnd] = useState(null)
+
+  // Funciones para el swipe
+  const minSwipeDistance = 50
+
+  const onTouchStart = (e) => {
+    setTouchEnd(null)
+    setTouchStart(e.targetTouches[0].clientX)
+  }
+
+  const onTouchMove = (e) => {
+    setTouchEnd(e.targetTouches[0].clientX)
+  }
+
+  const onTouchEnd = () => {
+    if (!touchStart || !touchEnd) return
+    const distance = touchStart - touchEnd
+    const isLeftSwipe = distance > minSwipeDistance
+    const isRightSwipe = distance < -minSwipeDistance
+
+    if (isLeftSwipe) {
+      nextLightboxImage()
+    } else if (isRightSwipe) {
+      prevLightboxImage()
+    }
+  }
+
+  // Función para manejar el click en los dots (indicadores)
+  const handleDotClick = (index) => {
+    if (index !== lightboxImageIndex) {
+      setIsImageTransitioning(true)
+      setTimeout(() => {
+        setLightboxImageIndex(index)
+        setTimeout(() => {
+          setIsImageTransitioning(false)
+        }, 50)
+      }, 300)
+    }
+  }
+
+  
   return (
     <div>
       <Header />
@@ -79,14 +178,30 @@ const Project = () => {
 
             <div className="project-header">
               <ul className="project-ul">
-                <li className="project-li">SKILLS</li>
-                <li className="project-li">LINK</li>
+                <li className="project-li" onClick={() => handleSectionChange('skills')}>SKILLS</li>
+                <li className="project-li" onClick={() => handleSectionChange('link')}>LINK</li>
               </ul>
             </div>
 
             <div className="project-info-container">
-              <h2 className='project-txt title'>{project.name}</h2>
-              <p className='project-txt'>{project.description}</p>
+              <div className="info-header">
+                <h2 className='project-txt title'>
+                  {project.name}
+                  {infoContent.subtitle && (
+                    <span className={`section-indicator ${isAnimating ? 'animating' : 're-animate'}`}>
+                      · {infoContent.subtitle} ·
+                    </span>
+                  )}
+                </h2>
+                {infoContent.subtitle && (
+                  <button className="close-info-btn" onClick={() => handleSectionChange('default')}>
+                    <CircleX size={16} />
+                  </button>
+                )}
+              </div>
+              <p className={`project-txt ${isAnimating ? 'animating' : 're-animate'}`}>
+                {infoContent.content}
+              </p>
             </div>
         </section>
 
@@ -112,19 +227,24 @@ const Project = () => {
         title={`${project.name} - Imagen ${lightboxImageIndex + 1} de ${project.images.length}`}
       >
         <div className="lightbox-slider">
-          <button className="lightbox-nav-btn prev-btn" onClick={prevLightboxImage}>
+          <button className="lightbox-nav-btn prev-btn desktop-only" onClick={prevLightboxImage}>
             <CircleChevronLeft size={32} />
           </button>
           
-          <div className="lightbox-image-container">
+          <div 
+            className="lightbox-image-container"
+            onTouchStart={onTouchStart}
+            onTouchMove={onTouchMove}
+            onTouchEnd={onTouchEnd}
+          >
             <img 
               src={project.images[lightboxImageIndex]} 
               alt={`${project.name} - Imagen ${lightboxImageIndex + 1}`}
-              className="lightbox-image"
+              className={`lightbox-image ${isImageTransitioning ? 'image-transition' : 'image-active'}`}
             />
           </div>
           
-          <button className="lightbox-nav-btn next-btn" onClick={nextLightboxImage}>
+          <button className="lightbox-nav-btn next-btn desktop-only" onClick={nextLightboxImage}>
             <CircleChevronRight size={32} />
           </button>
         </div>
@@ -135,7 +255,7 @@ const Project = () => {
             <button
               key={index}
               className={`lightbox-dot ${index === lightboxImageIndex ? 'active' : ''}`}
-              onClick={() => setLightboxImageIndex(index)}
+              onClick={() => handleDotClick(index)}
             />
           ))}
         </div>
