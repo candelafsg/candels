@@ -4,7 +4,7 @@ import { dbProjects } from '../../db/db.js'
 import { CustomTitles } from '../../components/custom-titles/CustomTitles.jsx'
 import { Header } from '../../components/header/Header.jsx'
 import { useState } from 'react'
-import { CircleChevronLeft, CircleChevronRight, CircleX } from 'lucide-react';
+import { CircleChevronLeft, CircleChevronRight, CircleX, Link } from 'lucide-react';
 import { IconButton } from '../../components/buttons/IconButton.jsx';
 import { useNavigate } from 'react-router'
 import { LightboxModal } from '../../components/lightbox/LightboxModal.jsx'
@@ -94,7 +94,16 @@ const Project = () => {
       case 'link':
         return {
           subtitle: 'LINK',
-          content: project.link
+          content: project.link ? (
+            <a 
+              href={project.link} 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="project-link-content"
+            >
+              ACCEDE AL LINK <Link size={16} />
+            </a>
+          ) : 'No disponible'
         }
       default:
         return {
