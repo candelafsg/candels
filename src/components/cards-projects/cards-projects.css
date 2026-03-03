@@ -8,11 +8,12 @@
 }
 
 .project-title {
-    text-transform: uppercase;
+    letter-spacing: 1px;
     
 }
 
 .project-description {
+    opacity: 0.85;
    
    
 }

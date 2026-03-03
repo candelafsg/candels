@@ -18,7 +18,7 @@ const CardsProjects = ({name, description, link, id}) => {
       <h3 className='project-title'>{name}</h3>
       <p className='project-description'>{description}</p>
       </div>
-      <a className="project-link" href={link} target="_blank" rel="noopener noreferrer">LINK <ArrowUpRight /></a>
+      <a className="project-link" href={link} target="_blank" rel="noopener noreferrer"> <ArrowUpRight /></a>
     </div>
   )
 }

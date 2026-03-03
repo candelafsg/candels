@@ -493,6 +493,9 @@ body:has(.contact-form-overlay:not(.closing)) {
 
 .direct-title, .direct-icon{opacity: 0.7;}
 
+.direct-title{
+    letter-spacing: 1px;
+}
 .direct-p{
     font-size: 1.5rem;
     color: var(--text);
