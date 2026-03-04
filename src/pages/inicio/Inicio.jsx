@@ -38,8 +38,8 @@ export default function Inicio() {
                     </svg>
 
 
-                    <NavLink to="/portfolio">
-                        <CircleChevronRight size={48} />
+                    <NavLink to="/portfolio" className="nav-link">
+                        <CircleChevronRight size={32} />
                     </NavLink>
                 </div>
 

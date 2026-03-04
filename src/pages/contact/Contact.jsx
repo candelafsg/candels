@@ -203,7 +203,7 @@ const Contact = () => {
                                             <div className="close-handle" onClick={handleCloseForm}></div></div>
 
                                         <div className="form-title-cont">
-                                            <h1 className="form-title-cont">Un buen proyecto, comienza aquí</h1>
+                                            <h1 className="form-title-cont">Un buen proyecto, <br /> comienza aquí</h1>
                                             <p className="form-subtitle">Entender tus necesidades es el primer paso para construir una web con intención.</p>
                                         </div>
 
