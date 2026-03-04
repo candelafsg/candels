@@ -4,11 +4,75 @@ import { dbProjects } from '../../db/db'
 import CardsProjects from '../../components/cards-projects/CardsProjects'
 import {Header} from '../../components/header/Header'
 import { useState } from 'react'
+import { LightboxModal } from '../../components/lightbox/LightboxModal.jsx'
 
 const Portfolio = () => {
 
   const [hoveredProject, setHoveredProject] = useState(null)
   const [selectedProject, setSelectedProject] = useState(null)
+  const [activeSection, setActiveSection] = useState(null)
+  
+  // Estados para el lightbox
+  const [isLightboxOpen, setIsLightboxOpen] = useState(false)
+  const [lightboxImageIndex, setLightboxImageIndex] = useState(0)
+  const [isImageTransitioning, setIsImageTransitioning] = useState(false)
+
+  // Reordenar proyectos: el seleccionado primero, luego el resto
+  const reorderedProjects = selectedProject 
+    ? [
+        dbProjects.find(p => p.id === selectedProject),
+        ...dbProjects.filter(p => p.id !== selectedProject)
+      ]
+    : dbProjects
+
+  const handleSectionClick = (section) => {
+    setActiveSection(activeSection === section ? null : section)
+  }
+
+  const handleProjectClick = (projectId) => {
+    setSelectedProject(projectId)
+    setActiveSection(null) // Resetear al cambiar de proyecto
+  }
+
+  // Funciones para el lightbox
+  const openLightbox = () => {
+    setLightboxImageIndex(0) // Empezar en la primera imagen
+    setIsLightboxOpen(true)
+  }
+
+  const closeLightbox = () => {
+    setIsLightboxOpen(false)
+  }
+
+  const nextLightboxImage = () => {
+    const project = dbProjects.find(p => p.id === selectedProject)
+    if (project && project.images.length > 0) {
+      setIsImageTransitioning(true)
+      setTimeout(() => {
+        setLightboxImageIndex((prevIndex) =>
+          prevIndex === project.images.length - 1 ? 0 : prevIndex + 1
+        )
+        setTimeout(() => {
+          setIsImageTransitioning(false)
+        }, 50)
+      }, 300)
+    }
+  }
+
+  const prevLightboxImage = () => {
+    const project = dbProjects.find(p => p.id === selectedProject)
+    if (project && project.images.length > 0) {
+      setIsImageTransitioning(true)
+      setTimeout(() => {
+        setLightboxImageIndex((prevIndex) =>
+          prevIndex === 0 ? project.images.length - 1 : prevIndex - 1
+        )
+        setTimeout(() => {
+          setIsImageTransitioning(false)
+        }, 50)
+      }, 300)
+    }
+  }
 
   
   return (
@@ -42,12 +106,13 @@ const Portfolio = () => {
         )}
         <div className={`desktop-container ${selectedProject ? 'shifted' : ''}`}>
           <ul className="portf-list-desk">
-            {dbProjects.map((project) => (
+            {reorderedProjects.map((project) => (
               <li 
                 key={project.id} 
+                className={selectedProject === project.id ? 'active' : ''}
                 onMouseEnter={() => setHoveredProject(project.id)}
                 onMouseLeave={() => setHoveredProject(null)}
-                onClick={() => setSelectedProject(project.id)}
+                onClick={() => handleProjectClick(project.id)}
               >
                 <h2>{project.name}</h2>
                 {hoveredProject === project.id && (
@@ -63,27 +128,110 @@ const Portfolio = () => {
         {selectedProject && (
           <div className={`project-detail-container ${selectedProject ? 'show' : ''}`}>
             <div className="project-content">
+              {/* Botón PREVIEW */}
+              <button className="preview-btn" onClick={openLightbox}>
+                PREVIEW
+              </button>
+              
               {/* Contenedor para imagen */}
               <div className="project-images">
-                {/* Aquí irán las imágenes */}
+                {dbProjects.find(p => p.id === selectedProject)?.frontPage && (
+                  <img 
+                    key={`project-image-${selectedProject}`}
+                    src={dbProjects.find(p => p.id === selectedProject).frontPage} 
+                    alt={dbProjects.find(p => p.id === selectedProject).name}
+                    className="project-main-image"
+                  />
+                )}
+              </div>
+              
+              {/* Acordeón minimalista */}
+              <div className="project-info-accordion">
+                <div 
+                  className={`info-header ${activeSection === 'description' ? 'active' : ''}`}
+                  onClick={() => handleSectionClick('description')}
+                >
+                  <h4>Descripción</h4>
+                </div>
+                <div className={`info-content ${activeSection === 'description' ? 'open' : ''}`}>
+                  <p>{dbProjects.find(p => p.id === selectedProject)?.description2}</p>
+                </div>
+
+                <div 
+                  className={`info-header ${activeSection === 'skills' ? 'active' : ''}`}
+                  onClick={() => handleSectionClick('skills')}
+                >
+                  <h4>Skills</h4>
+                </div>
+                <div className={`info-content ${activeSection === 'skills' ? 'open' : ''}`}>
+                  <div className="skills-list">
+                    {dbProjects.find(p => p.id === selectedProject)?.skills.map((skill, index) => (
+                      <span key={index} className="skill-item">{skill}</span>
+                    ))}
+                  </div>
+                </div>
+
+                {dbProjects.find(p => p.id === selectedProject)?.link && (
+                  <>
+                    <div 
+                      className={`info-header ${activeSection === 'link' ? 'active' : ''}`}
+                      onClick={() => handleSectionClick('link')}
+                    >
+                      <h4>Link</h4>
+                    </div>
+                    <div className={`info-content ${activeSection === 'link' ? 'open' : ''}`}>
+                      <a 
+                        href={dbProjects.find(p => p.id === selectedProject).link} 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="project-link"
+                      >
+                        Accede al proyecto →
+                      </a>
+                    </div>
+                  </>
+                )}
               </div>
               
               {/* Secciones de información */}
-              <div className="project-info-sections">
-                <div className="info-section">
-                  <h3>DESCRIPCIÓN <span className="arrow">↓</span></h3>
-                </div>
-                <div className="info-section">
-                  <h3>SKILLS <span className="arrow">↓</span></h3>
-                </div>
-                <div className="info-section">
-                  <h3>LINK <span className="arrow">↓</span></h3>
-                </div>
-              </div>
+             
             </div>
           </div>
         )}
       </div>
+      
+      {/* Lightbox Modal */}
+      <LightboxModal isOpen={isLightboxOpen} onClose={closeLightbox}>
+        {selectedProject && dbProjects.find(p => p.id === selectedProject)?.images.length > 0 && (
+          <div className="lightbox-slider">
+            {/* Flechas de navegación */}
+            {dbProjects.find(p => p.id === selectedProject).images.length > 1 && (
+              <>
+                <button className="lightbox-nav lightbox-prev" onClick={prevLightboxImage}>
+                  ‹
+                </button>
+                <button className="lightbox-nav lightbox-next" onClick={nextLightboxImage}>
+                  ›
+                </button>
+              </>
+            )}
+            
+            {/* Imagen actual */}
+            <img 
+              src={dbProjects.find(p => p.id === selectedProject).images[lightboxImageIndex]} 
+              alt={`Project image ${lightboxImageIndex + 1}`}
+              className={`lightbox-image ${isImageTransitioning ? 'transitioning' : ''}`}
+            />
+            
+            {/* Contador */}
+            {dbProjects.find(p => p.id === selectedProject).images.length > 1 && (
+              <div className="lightbox-counter">
+                {lightboxImageIndex + 1} / {dbProjects.find(p => p.id === selectedProject).images.length}
+              </div>
+            )}
+          </div>
+        )}
+      </LightboxModal>
     </div>
   )
 }

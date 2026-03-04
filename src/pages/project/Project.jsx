@@ -200,7 +200,7 @@ const Project = () => {
                   {project.name}
                   {infoContent.subtitle && (
                     <span className={`section-indicator ${isAnimating ? 'animating' : 're-animate'}`}>
-                      · {infoContent.subtitle} ·
+                       · {infoContent.subtitle} ·
                     </span>
                   )}
                 </h2>
