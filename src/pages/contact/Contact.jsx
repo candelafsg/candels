@@ -7,7 +7,7 @@ import { Button } from '../../components/buttons/Button';
 import { CircleX, ChevronDown, ChevronUp, ArrowRight } from 'lucide-react';
 import { useState } from 'react';
 import { ArrowUpRight } from 'lucide-react';
- import emailjs from '@emailjs/browser';
+import emailjs from '@emailjs/browser';
 
 
 
@@ -48,44 +48,44 @@ const Contact = () => {
     }
 
 
-const handleSubmit = async (e) => {
-    e.preventDefault();
-     console.log('handleSubmit ejecutado');  // ← añade esto
-    console.log('templateParams:', {        // ← y esto
-        name, email, message, webType, currentStage, budget
-    });
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        console.log('handleSubmit ejecutado');  // ← añade esto
+        console.log('templateParams:', {        // ← y esto
+            name, email, message, webType, currentStage, budget
+        });
 
-    const templateParams = {
-        name,
-        email,
-        message,
-        webType: webTypeOptions.find(opt => opt.value === webType)?.label || '',
-        currentStage: stageOptions.find(opt => opt.value === currentStage)?.label || '',
-        budget: budgetOptions.find(opt => opt.value === budget)?.label || ''
+        const templateParams = {
+            name,
+            email,
+            message,
+            webType: webTypeOptions.find(opt => opt.value === webType)?.label || '',
+            currentStage: stageOptions.find(opt => opt.value === currentStage)?.label || '',
+            budget: budgetOptions.find(opt => opt.value === budget)?.label || ''
+        };
+
+        try {
+            await emailjs.send(
+                'service_ixtawq9',      // ← el de Gmail
+                'template_0t5n2kd',     // ← tu plantilla
+                templateParams,
+                'E87yu09wFgGGzXjf0'       // ← Account > API Keys
+            );
+
+            setShowSuccessMessage(true);
+            setName(''); setEmail(''); setMessage('');
+            setWebType(''); setCurrentStage(''); setBudget('');
+
+            setTimeout(() => {
+                setShowSuccessMessage(false);
+                handleCloseForm();
+            }, 2000);
+
+        } catch (error) {
+            console.error('EmailJS error:', error);
+            alert('Hubo un error al enviar. Inténtalo de nuevo.');
+        }
     };
-
-    try {
-        await emailjs.send(
-            'service_ixtawq9',      // ← el de Gmail
-            'template_0t5n2kd',     // ← tu plantilla
-            templateParams,
-            'E87yu09wFgGGzXjf0'       // ← Account > API Keys
-        );
-
-        setShowSuccessMessage(true);
-        setName(''); setEmail(''); setMessage('');
-        setWebType(''); setCurrentStage(''); setBudget('');
-
-        setTimeout(() => {
-            setShowSuccessMessage(false);
-            handleCloseForm();
-        }, 2000);
-
-    } catch (error) {
-        console.error('EmailJS error:', error);
-        alert('Hubo un error al enviar. Inténtalo de nuevo.');
-    }
-};
 
     // Handler functions para dropdowns con animación
     const handleWebTypeToggle = () => {
@@ -182,223 +182,381 @@ const handleSubmit = async (e) => {
                     <h1 className="contact-h1">hablemos :)</h1>
                 </div>
 
-                <div className="contact-button-container">
-                    <Button className="contact-btn" onClick={handleOpenForm} iconPosition='right' icon={<ArrowRight size={20} />}>
-                        Iniciar proyecto
-                    </Button></div>
+                <div className="contact-content-wrapper">
+                    <section className="contact-section">
+
+                        <div className="contact-button-container">
+                            <Button className="contact-btn" onClick={handleOpenForm} iconPosition='right' icon={<ArrowRight size={20} />}>
+                                Iniciar proyecto
+                            </Button></div>
 
 
-                {
-                    openForm && (
-                        <div className={`contact-form-overlay ${isClosing ? 'closing' : ''}`}>
-                            <div className={`contact-form-container ${isClosing ? 'closing' : ''}`}>
-                                <button className="close-button" 
-                              onClick={handleCloseForm}></button>
-
-
-                                <div className="handle-container">
-                                <div className="close-handle" onClick={handleCloseForm}></div></div>
-
-                                <div className="form-title-cont">
-                                    <h1 className="form-title-cont">Un buen proyecto, comienza aquí</h1>
-                                    <p className="form-subtitle">Entender tus necesidades es el primer paso para construir una web con intención.</p>
-                                </div>
-
-                                <form className="contact-form" onSubmit={handleSubmit}>
-                                    <input
-                                        value={name}
-                                        className='contact-input'
-                                        type="text"
-                                        placeholder="¿Cómo te llamas?"
-                                        onChange={(e) => setName(e.target.value)}
-                                    />
-
-                                    <input
-                                        value={email}
-                                        className='contact-input'
-                                        type="email"
-                                        placeholder="¿Cuál es tu email?"
-                                        onChange={(e) => setEmail(e.target.value)}
-                                        required
-                                    />
-
-                                    {/* Dropdown personalizado para tipo de web */}
-                                    <div className="custom-dropdown">
-                                        <div className="dropdown-input-container">
-                                            <input
-                                                type="text"
-                                                className='contact-input'
-                                                placeholder="¿Qué tipo de web necesitas?"
-                                                value={webTypeOptions.find(opt => opt.value === webType)?.label || ''}
-                                                readOnly
-                                                onClick={handleWebTypeToggle}
-                                            />
-                                            <span className={`dropdown-arrow ${webTypeOpen ? 'open' : ''}`}>
-                                                <ChevronDown size={20} />
-                                            </span>
-                                        </div>
-                                        {webTypeOpen && (
-                                            <div className={`dropdown-options ${webTypeClosing ? 'closing' : ''}`}>
-                                                {webTypeOptions.map((option, index) => (
-                                                    <div
-                                                        key={option.value}
-                                                        className="dropdown-option"
-                                                        style={{ animationDelay: `${index * 0.1}s` }}
-                                                        onClick={() => {
-                                                            setWebType(option.value);
-                                                            setWebTypeClosing(true);
-                                                            setTimeout(() => {
-                                                                setWebTypeOpen(false);
-                                                                setWebTypeClosing(false);
-                                                            }, 300);
-                                                        }}
-                                                    >
-                                                        {option.label}
-                                                    </div>
-                                                ))}
-                                            </div>
-                                        )}
-                                    </div>
-
-                                    {/* Dropdown personalizado para etapa */}
-                                    <div className="custom-dropdown">
-                                        <div className="dropdown-input-container">
-                                            <input
-                                                type="text"
-                                                className='contact-input'
-                                                placeholder="¿En qué punto te encuentras?"
-                                                value={stageOptions.find(opt => opt.value === currentStage)?.label || ''}
-                                                readOnly
-                                                onClick={handleStageToggle}
-                                            />
-                                            <span className={`dropdown-arrow ${stageOpen ? 'open' : ''}`}>
-                                                <ChevronDown size={20} />
-                                            </span>
-                                        </div>
-                                        {stageOpen && (
-                                            <div className={`dropdown-options ${stageClosing ? 'closing' : ''}`}>
-                                                {stageOptions.map((option, index) => (
-                                                    <div
-                                                        key={option.value}
-                                                        className="dropdown-option"
-                                                        style={{ animationDelay: `${index * 0.1}s` }}
-                                                        onClick={() => {
-                                                            setCurrentStage(option.value);
-                                                            setStageClosing(true);
-                                                            setTimeout(() => {
-                                                                setStageOpen(false);
-                                                                setStageClosing(false);
-                                                            }, 300);
-                                                        }}
-                                                    >
-                                                        {option.label}
-                                                    </div>
-                                                ))}
-                                            </div>
-                                        )}
-                                    </div>
-
-                                    <textarea
-                                        value={message}
-                                        className='contact-textarea'
-                                        placeholder="¿Cuál es el objetivo principal de la web?"
-                                        onChange={(e) => setMessage(e.target.value)}
-                                    ></textarea>
-
-                                    {/* Dropdown personalizado para presupuesto */}
-                                    <div className="custom-dropdown">
-                                        <div className="dropdown-input-container">
-                                            <input
-                                                type="text"
-                                                className='contact-input'
-                                                placeholder="Presupuesto orientativo"
-                                                value={budgetOptions.find(opt => opt.value === budget)?.label || ''}
-                                                readOnly
-                                                onClick={handleBudgetToggle}
-                                            />
-                                            <span className={`dropdown-arrow ${budgetOpen ? 'open' : ''}`}>
-                                                <ChevronDown size={20} />
-                                            </span>
-                                        </div>
-                                        {budgetOpen && (
-                                            <div className={`dropdown-options ${budgetClosing ? 'closing' : ''}`}>
-                                                {budgetOptions.map((option, index) => (
-                                                    <div
-                                                        key={option.value}
-                                                        className="dropdown-option"
-                                                        style={{ animationDelay: `${index * 0.1}s` }}
-                                                        onClick={() => {
-                                                            setBudget(option.value);
-                                                            setBudgetClosing(true);
-                                                            setTimeout(() => {
-                                                                setBudgetOpen(false);
-                                                                setBudgetClosing(false);
-                                                            }, 300);
-                                                        }}
-                                                    >
-                                                        {option.label}
-                                                    </div>
-                                                ))}
-                                            </div>
-                                        )}
-                                    </div>
-
-                                    <div className="form-footer">
-                                        <button
-                                            type="button"
-                                            className="clear-button"
-                                            onClick={handleClearForm}
-                                        >
-                                            Borrar selección
-                                        </button>
-                                        <Button type="submit" className="submit-button">Enviar</Button>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    )
-                }
-
-                {
-                    showSuccessMessage && (
-                        <div className="success-message">
-                            <p>Tu mensaje ha sido enviado</p>
-                        </div>
-                    )
-                }
-
-
-                <div className="contact-direct">
-
-                    <div className="line-title">
-                        <span className="line"></span>
-                        <p className="line-p">CANALES DIRECTOS</p>
-                    </div>
-
-                    <ul className="direct-ul">
                         {
-                            contactOptions.map((option) => (
-                                <li key={option.value} className="direct-li">
-                                    <p className="direct-title">{option.label}</p>
-                                    <div className="direct-content">
-                                        <a href={option.value} className="direct-p" target="_blank" rel="noopener noreferrer">
-                                            {option.label === 'EMAIL' ? 'infocandels@gmail.com' :
-                                                option.label === 'INSTAGRAM' ? '@candelssssssweb' :
-                                                    '(+34) 654 068 208'}
-                                        </a>
-                                        <span className="direct-icon"><ArrowUpRight size={20} /></span>
+                            openForm && (
+                                <div className={`contact-form-overlay ${isClosing ? 'closing' : ''}`}>
+                                    <div className={`contact-form-container ${isClosing ? 'closing' : ''}`}>
+                                        <button className="close-button"
+                                            onClick={handleCloseForm}></button>
+
+
+                                        <div className="handle-container">
+                                            <div className="close-handle" onClick={handleCloseForm}></div></div>
+
+                                        <div className="form-title-cont">
+                                            <h1 className="form-title-cont">Un buen proyecto, comienza aquí</h1>
+                                            <p className="form-subtitle">Entender tus necesidades es el primer paso para construir una web con intención.</p>
+                                        </div>
+
+                                        <form className="contact-form" onSubmit={handleSubmit}>
+                                            <input
+                                                value={name}
+                                                className='contact-input'
+                                                type="text"
+                                                placeholder="¿Cómo te llamas?"
+                                                onChange={(e) => setName(e.target.value)}
+                                            />
+
+                                            <input
+                                                value={email}
+                                                className='contact-input'
+                                                type="email"
+                                                placeholder="¿Cuál es tu email?"
+                                                onChange={(e) => setEmail(e.target.value)}
+                                                required
+                                            />
+
+                                            {/* Dropdown personalizado para tipo de web */}
+                                            <div className="custom-dropdown">
+                                                <div className="dropdown-input-container">
+                                                    <input
+                                                        type="text"
+                                                        className='contact-input'
+                                                        placeholder="¿Qué tipo de web necesitas?"
+                                                        value={webTypeOptions.find(opt => opt.value === webType)?.label || ''}
+                                                        readOnly
+                                                        onClick={handleWebTypeToggle}
+                                                    />
+                                                    <span className={`dropdown-arrow ${webTypeOpen ? 'open' : ''}`}>
+                                                        <ChevronDown size={20} />
+                                                    </span>
+                                                </div>
+                                                {webTypeOpen && (
+                                                    <div className={`dropdown-options ${webTypeClosing ? 'closing' : ''}`}>
+                                                        {webTypeOptions.map((option, index) => (
+                                                            <div
+                                                                key={option.value}
+                                                                className="dropdown-option"
+                                                                style={{ animationDelay: `${index * 0.1}s` }}
+                                                                onClick={() => {
+                                                                    setWebType(option.value);
+                                                                    setWebTypeClosing(true);
+                                                                    setTimeout(() => {
+                                                                        setWebTypeOpen(false);
+                                                                        setWebTypeClosing(false);
+                                                                    }, 300);
+                                                                }}
+                                                            >
+                                                                {option.label}
+                                                            </div>
+                                                        ))}
+                                                    </div>
+                                                )}
+                                            </div>
+
+                                            {/* Dropdown personalizado para etapa */}
+                                            <div className="custom-dropdown">
+                                                <div className="dropdown-input-container">
+                                                    <input
+                                                        type="text"
+                                                        className='contact-input'
+                                                        placeholder="¿En qué punto te encuentras?"
+                                                        value={stageOptions.find(opt => opt.value === currentStage)?.label || ''}
+                                                        readOnly
+                                                        onClick={handleStageToggle}
+                                                    />
+                                                    <span className={`dropdown-arrow ${stageOpen ? 'open' : ''}`}>
+                                                        <ChevronDown size={20} />
+                                                    </span>
+                                                </div>
+                                                {stageOpen && (
+                                                    <div className={`dropdown-options ${stageClosing ? 'closing' : ''}`}>
+                                                        {stageOptions.map((option, index) => (
+                                                            <div
+                                                                key={option.value}
+                                                                className="dropdown-option"
+                                                                style={{ animationDelay: `${index * 0.1}s` }}
+                                                                onClick={() => {
+                                                                    setCurrentStage(option.value);
+                                                                    setStageClosing(true);
+                                                                    setTimeout(() => {
+                                                                        setStageOpen(false);
+                                                                        setStageClosing(false);
+                                                                    }, 300);
+                                                                }}
+                                                            >
+                                                                {option.label}
+                                                            </div>
+                                                        ))}
+                                                    </div>
+                                                )}
+                                            </div>
+
+                                            <textarea
+                                                value={message}
+                                                className='contact-textarea'
+                                                placeholder="¿Cuál es el objetivo principal de la web?"
+                                                onChange={(e) => setMessage(e.target.value)}
+                                            ></textarea>
+
+                                            {/* Dropdown personalizado para presupuesto */}
+                                            <div className="custom-dropdown">
+                                                <div className="dropdown-input-container">
+                                                    <input
+                                                        type="text"
+                                                        className='contact-input'
+                                                        placeholder="Presupuesto orientativo"
+                                                        value={budgetOptions.find(opt => opt.value === budget)?.label || ''}
+                                                        readOnly
+                                                        onClick={handleBudgetToggle}
+                                                    />
+                                                    <span className={`dropdown-arrow ${budgetOpen ? 'open' : ''}`}>
+                                                        <ChevronDown size={20} />
+                                                    </span>
+                                                </div>
+                                                {budgetOpen && (
+                                                    <div className={`dropdown-options ${budgetClosing ? 'closing' : ''}`}>
+                                                        {budgetOptions.map((option, index) => (
+                                                            <div
+                                                                key={option.value}
+                                                                className="dropdown-option"
+                                                                style={{ animationDelay: `${index * 0.1}s` }}
+                                                                onClick={() => {
+                                                                    setBudget(option.value);
+                                                                    setBudgetClosing(true);
+                                                                    setTimeout(() => {
+                                                                        setBudgetOpen(false);
+                                                                        setBudgetClosing(false);
+                                                                    }, 300);
+                                                                }}
+                                                            >
+                                                                {option.label}
+                                                            </div>
+                                                        ))}
+                                                    </div>
+                                                )}
+                                            </div>
+
+                                            <div className="form-footer">
+                                                <button
+                                                    type="button"
+                                                    className="clear-button"
+                                                    onClick={handleClearForm}
+                                                >
+                                                    Borrar selección
+                                                </button>
+                                                <Button type="submit" className="submit-button">Enviar</Button>
+                                            </div>
+                                        </form>
                                     </div>
-
-
-                                </li>
-
-                            ))
+                                </div>
+                            )
                         }
 
-                    </ul>
+                        {
+                            showSuccessMessage && (
+                                <div className="success-message">
+                                    <p>Tu mensaje ha sido enviado</p>
+                                </div>
+                            )
+                        }
 
+
+                        <div className="contact-direct">
+
+                            <div className="line-title">
+                                <span className="line"></span>
+                                <p className="line-p">CANALES DIRECTOS</p>
+                            </div>
+
+                            <ul className="direct-ul">
+                                {
+                                    contactOptions.map((option) => (
+                                        <li key={option.value} className="direct-li">
+                                            <p className="direct-title">{option.label}</p>
+                                            <div className="direct-content">
+                                                <a href={option.value} className="direct-p" target="_blank" rel="noopener noreferrer">
+                                                    {option.label === 'EMAIL' ? 'infocandels@gmail.com' :
+                                                        option.label === 'INSTAGRAM' ? '@candelssssssweb' :
+                                                            '(+34) 654 068 208'}
+                                                </a>
+                                                <span className="direct-icon"><ArrowUpRight size={20} /></span>
+                                            </div>
+
+
+                                        </li>
+
+                                    ))
+                                }
+
+                            </ul>
+
+                        </div>
+                    </section>
+
+
+                    <section className="contact-form-section">
+                        <form className="contact-form" onSubmit={handleSubmit}>
+                            <input
+                                value={name}
+                                className='contact-input'
+                                type="text"
+                                placeholder="¿Cómo te llamas?"
+                                onChange={(e) => setName(e.target.value)}
+                            />
+
+                            <input
+                                value={email}
+                                className='contact-input'
+                                type="email"
+                                placeholder="¿Cuál es tu email?"
+                                onChange={(e) => setEmail(e.target.value)}
+                                required
+                            />
+
+                            {/* Dropdown personalizado para tipo de web */}
+                            <div className="custom-dropdown">
+                                <div className="dropdown-input-container">
+                                    <input
+                                        type="text"
+                                        className='contact-input'
+                                        placeholder="¿Qué tipo de web necesitas?"
+                                        value={webTypeOptions.find(opt => opt.value === webType)?.label || ''}
+                                        readOnly
+                                        onClick={handleWebTypeToggle}
+                                    />
+                                    <span className={`dropdown-arrow ${webTypeOpen ? 'open' : ''}`}>
+                                        <ChevronDown size={20} />
+                                    </span>
+                                </div>
+                                {webTypeOpen && (
+                                    <div className={`dropdown-options ${webTypeClosing ? 'closing' : ''}`}>
+                                        {webTypeOptions.map((option, index) => (
+                                            <div
+                                                key={option.value}
+                                                className="dropdown-option"
+                                                style={{ animationDelay: `${index * 0.1}s` }}
+                                                onClick={() => {
+                                                    setWebType(option.value);
+                                                    setWebTypeClosing(true);
+                                                    setTimeout(() => {
+                                                        setWebTypeOpen(false);
+                                                        setWebTypeClosing(false);
+                                                    }, 300);
+                                                }}
+                                            >
+                                                {option.label}
+                                            </div>
+                                        ))}
+                                    </div>
+                                )}
+                            </div>
+
+                            {/* Dropdown personalizado para etapa */}
+                            <div className="custom-dropdown">
+                                <div className="dropdown-input-container">
+                                    <input
+                                        type="text"
+                                        className='contact-input'
+                                        placeholder="¿En qué punto te encuentras?"
+                                        value={stageOptions.find(opt => opt.value === currentStage)?.label || ''}
+                                        readOnly
+                                        onClick={handleStageToggle}
+                                    />
+                                    <span className={`dropdown-arrow ${stageOpen ? 'open' : ''}`}>
+                                        <ChevronDown size={20} />
+                                    </span>
+                                </div>
+                                {stageOpen && (
+                                    <div className={`dropdown-options ${stageClosing ? 'closing' : ''}`}>
+                                        {stageOptions.map((option, index) => (
+                                            <div
+                                                key={option.value}
+                                                className="dropdown-option"
+                                                style={{ animationDelay: `${index * 0.1}s` }}
+                                                onClick={() => {
+                                                    setCurrentStage(option.value);
+                                                    setStageClosing(true);
+                                                    setTimeout(() => {
+                                                        setStageOpen(false);
+                                                        setStageClosing(false);
+                                                    }, 300);
+                                                }}
+                                            >
+                                                {option.label}
+                                            </div>
+                                        ))}
+                                    </div>
+                                )}
+                            </div>
+
+                            <textarea
+                                value={message}
+                                className='contact-textarea'
+                                placeholder="¿Cuál es el objetivo principal de la web?"
+                                onChange={(e) => setMessage(e.target.value)}
+                            ></textarea>
+
+                            {/* Dropdown personalizado para presupuesto */}
+                            <div className="custom-dropdown">
+                                <div className="dropdown-input-container">
+                                    <input
+                                        type="text"
+                                        className='contact-input'
+                                        placeholder="Presupuesto orientativo"
+                                        value={budgetOptions.find(opt => opt.value === budget)?.label || ''}
+                                        readOnly
+                                        onClick={handleBudgetToggle}
+                                    />
+                                    <span className={`dropdown-arrow ${budgetOpen ? 'open' : ''}`}>
+                                        <ChevronDown size={20} />
+                                    </span>
+                                </div>
+                                {budgetOpen && (
+                                    <div className={`dropdown-options ${budgetClosing ? 'closing' : ''}`}>
+                                        {budgetOptions.map((option, index) => (
+                                            <div
+                                                key={option.value}
+                                                className="dropdown-option"
+                                                style={{ animationDelay: `${index * 0.1}s` }}
+                                                onClick={() => {
+                                                    setBudget(option.value);
+                                                    setBudgetClosing(true);
+                                                    setTimeout(() => {
+                                                        setBudgetOpen(false);
+                                                        setBudgetClosing(false);
+                                                    }, 300);
+                                                }}
+                                            >
+                                                {option.label}
+                                            </div>
+                                        ))}
+                                    </div>
+                                )}
+                            </div>
+
+                            <div className="form-footer">
+                                <button
+                                    type="button"
+                                    className="clear-button"
+                                    onClick={handleClearForm}
+                                >
+                                    Borrar selección
+                                </button>
+                                <Button type="submit" className="submit-button">Enviar</Button>
+                            </div>
+                        </form>
+                    </section>
                 </div>
-
 
             </main>
 

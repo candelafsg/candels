@@ -14,7 +14,15 @@ const Portfolio = () => {
   return (
     <div>
       <Header />    
-      <CustomTitles>PORTFOLIO</CustomTitles>
+      {/* <CustomTitles>PORTFOLIO</CustomTitles> */}
+
+      <div className="title-subtitle-container">
+              <h1 className="portfolio-title">Proyectos</h1>
+              <p className="portfolio-subtitle">Cada proyecto responde a un contexto, un objetivo y una manera de contar.</p>
+
+
+
+      </div>
 
       <div className="portfolio-list">
         <ul className="portfolio-ul">

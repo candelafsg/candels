@@ -18,13 +18,13 @@
 }
 .contact-h2{
     line-height:0.8;
-    font-size: 2rem;
+    font-size: 6vw;
     
 }
 
 
 .contact-h1{
-    font-size: 3rem;
+    font-size: 9vw;
 }
 
 
@@ -506,4 +506,49 @@ body:has(.contact-form-overlay:not(.closing)) {
 
 .direct-p:hover {
     color: #666;
+}
+
+.contact-form-section{
+    display: none;
+}
+
+
+@media screen and (min-width:768px) {
+    .contact-main{
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .contact-content-wrapper{
+        display: flex;
+        flex-direction: row;
+        gap: 4rem;
+        width: 100%;
+    }
+
+    .contact-section{
+        width: 40%;
+    }
+
+    .contact-form-section{
+        display: block;
+        flex: 1;
+    }
+
+    .contact-button-container{
+        display: none;
+    }
+
+    .form-footer{
+        display:flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .clear-button{
+        padding: 0rem;
+        text-align: start;
+    }
 }

@@ -27,7 +27,14 @@
 
 .header-menu-container{
     position: relative;
-   
+}
+
+.header-menu-container svg {
+    cursor: pointer;
+    width: 24px;
+    height: 24px;
+    color: var(--text);
+    transition: opacity 0.2s ease, transform 0.2s ease;
 }
 
 .header-menu-container .header-ul{

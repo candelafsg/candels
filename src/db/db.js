@@ -18,7 +18,7 @@ export const dbProjects = [
         skills: ['React', 'Figma'],
         link: 'https://www.lamesita.es/',
         images: ['https://res.cloudinary.com/dhwd1b4be/image/upload/v1772136332/Frame_88_bkoiu1.png', 'https://res.cloudinary.com/dhwd1b4be/image/upload/v1772136333/Frame_89_y4p6nw.png', 'https://res.cloudinary.com/dhwd1b4be/image/upload/v1772136329/Frame_90_zjojyv.png', 'https://res.cloudinary.com/dhwd1b4be/image/upload/v1772136326/Frame_90-1_b1ih6s.png', 'https://res.cloudinary.com/dhwd1b4be/image/upload/v1772136329/Frame_92_izi8rp.png'  ],
-        frontPage:''
+        frontPage:'https://res.cloudinary.com/dnz96cick/image/upload/v1762086153/LAMESITA_1_b102ar.jpg'
     },
       {
         id: 3,
