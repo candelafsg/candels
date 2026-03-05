@@ -3,6 +3,7 @@
 import './inicio.css';
 import { CircleChevronRight } from 'lucide-react';
 import { NavLink } from 'react-router';
+import { CountUp } from '../../components/counter/Counter';
 
 export default function Inicio() {
     return (

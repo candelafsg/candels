@@ -7,7 +7,7 @@
     justify-content: center;
     width: 100%;
     min-height: 100dvh;
-    gap: 2rem;
+  
     overflow: hidden;
 }
 
@@ -161,6 +161,9 @@ body:has(.contact-form-overlay:not(.closing)) {
     opacity: 0.9;
 }
 
+.contact-btn{
+    margin-bottom: 1.5rem;
+}
 
 
 .contact-form{

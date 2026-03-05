@@ -5,6 +5,11 @@ import CardsProjects from '../../components/cards-projects/CardsProjects'
 import {Header} from '../../components/header/Header'
 import { useState } from 'react'
 import { LightboxModal } from '../../components/lightbox/LightboxModal.jsx'
+import { ChevronRight } from 'lucide-react';
+import { ChevronLeft } from 'lucide-react';
+import { Maximize2 } from 'lucide-react';
+
+
 
 const Portfolio = () => {
 
@@ -130,7 +135,7 @@ const Portfolio = () => {
             <div className="project-content">
               {/* Botón PREVIEW */}
               <button className="preview-btn" onClick={openLightbox}>
-                PREVIEW
+                PREVIEW <Maximize2 size={12} />
               </button>
               
               {/* Contenedor para imagen */}
@@ -147,38 +152,47 @@ const Portfolio = () => {
               
               {/* Acordeón minimalista */}
               <div className="project-info-accordion">
-                <div 
-                  className={`info-header ${activeSection === 'description' ? 'active' : ''}`}
-                  onClick={() => handleSectionClick('description')}
-                >
-                  <h4>Descripción</h4>
-                </div>
-                <div className={`info-content ${activeSection === 'description' ? 'open' : ''}`}>
-                  <p>{dbProjects.find(p => p.id === selectedProject)?.description2}</p>
-                </div>
-
-                <div 
-                  className={`info-header ${activeSection === 'skills' ? 'active' : ''}`}
-                  onClick={() => handleSectionClick('skills')}
-                >
-                  <h4>Skills</h4>
-                </div>
-                <div className={`info-content ${activeSection === 'skills' ? 'open' : ''}`}>
-                  <div className="skills-list">
-                    {dbProjects.find(p => p.id === selectedProject)?.skills.map((skill, index) => (
-                      <span key={index} className="skill-item">{skill}</span>
-                    ))}
+                {/* Header con el nombre del proyecto y secciones */}
+                <div className="project-info-acordion-header">
+                  <div 
+                    className={`inf-header ${activeSection === 'description' ? 'active' : ''}`}
+                    onClick={() => handleSectionClick('description')}
+                  >
+                    <h5>{dbProjects.find(p => p.id === selectedProject)?.name}</h5>
                   </div>
-                </div>
-
-                {dbProjects.find(p => p.id === selectedProject)?.link && (
-                  <>
+                  
+                  <div 
+                    className={`inf-header ${activeSection === 'skills' ? 'active' : ''}`}
+                    onClick={() => handleSectionClick('skills')}
+                  >
+                    <h5>Skills</h5>
+                  </div>
+                  
+                  {dbProjects.find(p => p.id === selectedProject)?.link && (
                     <div 
-                      className={`info-header ${activeSection === 'link' ? 'active' : ''}`}
+                      className={`inf-header ${activeSection === 'link' ? 'active' : ''}`}
                       onClick={() => handleSectionClick('link')}
                     >
-                      <h4>Link</h4>
+                      <h5>Link</h5>
                     </div>
+                  )}
+                </div>
+
+                {/* Contenedor de contenido */}
+                <div className="project-info-content">
+                  <div className={`info-content ${activeSection === 'description' ? 'open' : ''}`}>
+                    <p>{dbProjects.find(p => p.id === selectedProject)?.description2}</p>
+                  </div>
+
+                  <div className={`info-content ${activeSection === 'skills' ? 'open' : ''}`}>
+                    <div className="skills-list">
+                      {dbProjects.find(p => p.id === selectedProject)?.skills.map((skill, index) => (
+                        <span key={index} className="skill-item">{skill}</span>
+                      ))}
+                    </div>
+                  </div>
+
+                  {dbProjects.find(p => p.id === selectedProject)?.link && (
                     <div className={`info-content ${activeSection === 'link' ? 'open' : ''}`}>
                       <a 
                         href={dbProjects.find(p => p.id === selectedProject).link} 
@@ -186,11 +200,11 @@ const Portfolio = () => {
                         rel="noopener noreferrer"
                         className="project-link"
                       >
-                        Accede al proyecto →
+                        Accede link :)
                       </a>
                     </div>
-                  </>
-                )}
+                  )}
+                </div>
               </div>
               
               {/* Secciones de información */}
@@ -208,10 +222,10 @@ const Portfolio = () => {
             {dbProjects.find(p => p.id === selectedProject).images.length > 1 && (
               <>
                 <button className="lightbox-nav lightbox-prev" onClick={prevLightboxImage}>
-                  ‹
+                  <ChevronLeft size={32} />
                 </button>
                 <button className="lightbox-nav lightbox-next" onClick={nextLightboxImage}>
-                  ›
+                  <ChevronRight size={32} />
                 </button>
               </>
             )}

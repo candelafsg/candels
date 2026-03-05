@@ -1,5 +1,5 @@
 import './lightbox.css'
-import { CircleX } from 'lucide-react'
+import { X } from 'lucide-react';
 import { useEffect } from 'react'
 
 export const LightboxModal = ({ isOpen, onClose, title, children }) => {
@@ -33,7 +33,8 @@ export const LightboxModal = ({ isOpen, onClose, title, children }) => {
     <div className="lightbox-backdrop" onClick={handleBackdropClick}>
       <div className="lightbox-content">
         <button className="lightbox-close" onClick={onClose}>
-          <CircleX className="close-icon" size={24} />
+          <X className="close-icon" size={32} />
+          
         </button>
         
      

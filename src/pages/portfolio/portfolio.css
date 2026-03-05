@@ -45,9 +45,12 @@
 
 @media screen and (min-width: 768px) {
     /* Estilos para escritorio  */
-.title-subtitle-container{
-    display: none;
-}
+
+
+    .title-subtitle-container {
+        display: none;
+    }
+
     .portfolio-list {
         display: none;
     }
@@ -92,7 +95,7 @@
     .desktop-container.shifted .portf-list-desk {
         align-items: flex-start;
         text-align: left;
-        width: 100%;
+        width: 40%;
     }
 
     .desktop-container.shifted .portf-list-desk li {
@@ -192,7 +195,7 @@
         z-index: 11;
         padding: 5px;
         border-radius: 50%;
-       
+
         display: flex;
         align-items: center;
         justify-content: center;
@@ -200,7 +203,7 @@
     }
 
     .close-btn:hover {
-       scale:0.98;
+        scale: 0.98;
     }
 
     .project-content {
@@ -210,27 +213,30 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        gap: 2rem;
+        gap: 0.5rem;
         position: relative;
     }
 
     .preview-btn {
         position: absolute;
-        top: -3%;
-        left: 83%;
-       background: none;
-        color:var(--text);
+        top: 6%;
+        right: 5.5%;
+        background-color: rgba(0, 0, 0, 0.15);
+        color: var(--background);
         border: none;
-        padding: 0.5rem 1rem;
+        padding: 0.7rem;
         font-size: 0.8rem;
-        font-weight: 500;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
         text-transform: uppercase;
         cursor: pointer;
-        border-radius: 4px;
+        border-radius: 6px;
+        z-index: 10;
         transition: background 0.3s ease, transform 0.2s ease;
     }
 
-    
+
 
     /* Estilos para el lightbox dentro del portfolio */
     .lightbox-slider {
@@ -260,7 +266,7 @@
         transform: translateY(-50%);
         background: rgba(255, 255, 255, 0.1);
         border: none;
-        color: #fff;
+        color: var(--background);
         font-size: 36px;
         cursor: pointer;
         padding: 20px;
@@ -291,7 +297,7 @@
         bottom: 20px;
         left: 50%;
         transform: translateX(-50%);
-        color: #fff;
+        color: var(--background);
         font-size: 14px;
         opacity: 0.7;
         background: rgba(0, 0, 0, 0.5);
@@ -331,35 +337,47 @@
         }
     }
 
-    .project-info-accordion {
-        width: 100%;
-        max-width: 500px;
-        min-height: fit-content;
-        transition: all 0.3s ease;
+    .project-info-acordion-header {
+        display: flex;
+
+        border: 0.3px solid var(--text);
+        gap: 2rem;
+        align-items: center;
+        border-radius: 2px;
     }
 
-    .info-header {
+    .project-info-accordion {}
+
+    .project-info-content {
+        margin-top: 2rem;
+
+    }
+
+    .inf-header {
         display: flex;
+        flex-direction: column;
         justify-content: center;
         align-items: center;
+        width: 100%;
         cursor: pointer;
         position: relative;
-        margin: -0.8rem 0;
-        padding: 0.8rem 0;
+        padding: 0.5rem;
         z-index: 1;
+        text-align: center;
     }
 
     .info-content {
-        max-height: 0;
+        height: 0;
         overflow: hidden;
-        transition: max-height 0.4s ease, opacity 0.3s ease;
+        transition: height 0.4s ease, opacity 0.3s ease;
         opacity: 0;
         padding: 0;
         margin-top: -0.4rem;
         z-index: 0;
+        width: 100%;
     }
 
-    .info-header::before {
+    .inf-header::before {
         content: '';
         position: absolute;
         top: 0;
@@ -369,34 +387,32 @@
         z-index: -1;
     }
 
-    .info-header h4 {
-        margin: 0;
-        font-size: 0.9rem;
-        color: #333;
-        font-weight: 500;
+    .inf-header h5 {
         text-transform: uppercase;
-        transition: color 0.3s ease;
+        width: 100%;
+
+        transition: all 0.3s ease;
     }
 
-    .info-header:hover h4,
-    .info-header.active h4 {
+    .inf-header:hover h5,
+    .inf-header.active h5 {
         color: #666;
     }
 
-    .info-header:hover h4::before,
-    .info-header.active h4::before {
+    .inf-header:hover h5::before,
+    .inf-header.active h5::before {
         content: "· ";
         color: #666;
     }
 
-    .info-header:hover h4::after,
-    .info-header.active h4::after {
+    .inf-header:hover h5::after,
+    .inf-header.active h5::after {
         content: " ·";
         color: #666;
     }
 
     .info-content.open {
-        max-height: 40px;
+        height: 60px;
         opacity: 1;
     }
 
@@ -410,7 +426,7 @@
     .skills-list {
         display: flex;
         flex-wrap: wrap;
-        gap: 0.5rem;
+        gap: 0.3rem;
     }
 
     .skill-item {
@@ -438,19 +454,20 @@
 
     /* Desktop: Hover behavior */
     @media (min-width: 1025px) {
-        .info-header:hover + .info-content {
-            max-height: 200px;
+        .info-header:hover+.info-content {
+            height: 60px;
             opacity: 1;
         }
 
         .info-header {
-            pointer-events: auto; /* Enable hover on individual headers */
+            pointer-events: auto;
+            /* Enable hover on individual headers */
         }
     }
 
 
 
-  
+
 
     .info-section:hover {
         background: #e8e8e8;
