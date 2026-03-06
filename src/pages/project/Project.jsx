@@ -3,7 +3,7 @@ import { useParams } from 'react-router'
 import { dbProjects } from '../../db/db.js'
 import { CustomTitles } from '../../components/custom-titles/CustomTitles.jsx'
 import { Header } from '../../components/header/Header.jsx'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { CircleChevronLeft, CircleChevronRight, CircleX, Link } from 'lucide-react';
 import { IconButton } from '../../components/buttons/IconButton.jsx';
 import { useNavigate } from 'react-router'
@@ -32,6 +32,21 @@ const Project = () => {
   
   // Estado para controlar las animaciones
   const [isAnimating, setIsAnimating] = useState(false)
+
+  // Mobile: ocultar la info hasta que termine la transición de página
+  const [isMobileIntroReady, setIsMobileIntroReady] = useState(false)
+
+  useEffect(() => {
+    const isMobile = typeof window !== 'undefined' && window.matchMedia && window.matchMedia('(max-width: 767px)').matches
+    if (!isMobile) {
+      setIsMobileIntroReady(true)
+      return
+    }
+
+    setIsMobileIntroReady(false)
+    const t = setTimeout(() => setIsMobileIntroReady(true), 600)
+    return () => clearTimeout(t)
+  }, [pid])
 
   if (!project) {
     return (
@@ -193,7 +208,7 @@ const Project = () => {
               </ul>
             </div>
 
-            <div className="project-info-container">
+            <div className={`project-info-container ${isMobileIntroReady ? 'animate-in' : ''}`}>
               <div className="info-header">
                 <h2 className='project-txt title'>
                   {project.name}
