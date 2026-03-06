@@ -304,12 +304,12 @@ const Contact = () => {
                                             <textarea
                                                 value={message}
                                                 className='contact-textarea'
-                                                placeholder="¿Cuál es el objetivo principal de la web?"
+                                                placeholder="Breve descripción de tu proyecto"
                                                 onChange={(e) => setMessage(e.target.value)}
                                             ></textarea>
 
                                             {/* Dropdown personalizado para presupuesto */}
-                                            <div className="custom-dropdown">
+                                            {/* <div className="custom-dropdown">
                                                 <div className="dropdown-input-container">
                                                     <input
                                                         type="text"
@@ -344,7 +344,7 @@ const Contact = () => {
                                                         ))}
                                                     </div>
                                                 )}
-                                            </div>
+                                            </div> */}
 
                                             <div className="form-footer">
                                                 <button
@@ -502,12 +502,12 @@ const Contact = () => {
                             <textarea
                                 value={message}
                                 className='contact-textarea'
-                                placeholder="¿Cuál es el objetivo principal de la web?"
+                                placeholder="Breve descripción de tu proyecto"
                                 onChange={(e) => setMessage(e.target.value)}
                             ></textarea>
 
                             {/* Dropdown personalizado para presupuesto */}
-                            <div className="custom-dropdown">
+                            {/* <div className="custom-dropdown">
                                 <div className="dropdown-input-container">
                                     <input
                                         type="text"
@@ -542,7 +542,7 @@ const Contact = () => {
                                         ))}
                                     </div>
                                 )}
-                            </div>
+                            </div> */}
 
                             <div className="form-footer">
                                 <button

@@ -8,7 +8,6 @@ import { CircleChevronLeft, CircleChevronRight, CircleX, Link } from 'lucide-rea
 import { IconButton } from '../../components/buttons/IconButton.jsx';
 import { useNavigate } from 'react-router'
 import { LightboxModal } from '../../components/lightbox/LightboxModal.jsx'
-import { div } from 'framer-motion/client'
 
 
 
@@ -46,7 +45,7 @@ const Project = () => {
 
 
   const handleBack = () => {
-    navigate('/portfolio')
+    navigate('/portfolio', { state: { transition: 'back' } })
   }
 
   // Funciones para el lightbox modal

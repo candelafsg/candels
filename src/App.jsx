@@ -1,16 +1,13 @@
 
 import './App.css'
-import { Outlet } from 'react-router'
-import { Footer } from './components/footer/Footer'
+import PageTransition from './components/page-transition/PageTransition'
 
 function App() {
  
 
   return (
     <>
-     
-    <Outlet />
-    
+     <PageTransition />
     </>
   )
 }

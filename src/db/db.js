@@ -37,7 +37,7 @@ export const dbProjects = [
         description2: 'Web App de música donde puedes buscar canciones por género y crear listas de reproducción.',
         skills: ['React', 'Node.js', 'Figma'],
         link: 'https://soundslike-frontend.vercel.app/',
-        images: ['https://res.cloudinary.com/dhwd1b4be/image/upload/v1772527036/Frame_87_no2yd6.png', 'https://res.cloudinary.com/dhwd1b4be/image/upload/v1772527035/Frame_88_oxfmct.png', 'https://res.cloudinary.com/dhwd1b4be/image/upload/v1772527035/Frame_90_tucx5b.png', 'https://res.cloudinary.com/dhwd1b4be/image/upload/v1772527035/Frame_94_lrldhx.png', 'https://res.cloudinary.com/dhwd1b4be/image/upload/v1772527035/Frame_93_frj45v.png', 'https://res.cloudinary.com/dhwd1b4be/image/upload/v1772527035/Frame_92_ypof3s.png', 'https://res.cloudinary.com/dhwd1b4be/image/upload/v1772527035/Frame_89_wejrlz.png', 'https://res.cloudinary.com/dhwd1b4be/image/upload/v1772527035/Frame_91_kmcduc.png'],
+        images: ['https://res.cloudinary.com/dhwd1b4be/image/upload/v1772527036/Frame_87_no2yd6.png', 'https://res.cloudinary.com/dhwd1b4be/image/upload/v1772784192/Frame_88_kk0t0c.png', 'https://res.cloudinary.com/dhwd1b4be/image/upload/v1772527035/Frame_90_tucx5b.png', 'https://res.cloudinary.com/dhwd1b4be/image/upload/v1772527035/Frame_94_lrldhx.png', 'https://res.cloudinary.com/dhwd1b4be/image/upload/v1772527035/Frame_93_frj45v.png', 'https://res.cloudinary.com/dhwd1b4be/image/upload/v1772527035/Frame_92_ypof3s.png', 'https://res.cloudinary.com/dhwd1b4be/image/upload/v1772527035/Frame_89_wejrlz.png', 'https://res.cloudinary.com/dhwd1b4be/image/upload/v1772527035/Frame_91_kmcduc.png'],
         frontPage:'https://res.cloudinary.com/dhwd1b4be/image/upload/v1772129555/portada-soundslike_mli21z.png'
     },
 

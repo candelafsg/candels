@@ -4,12 +4,18 @@
   box-sizing: border-box;
 }
 
+html, body, #root {
+  height: 100%;
+  overflow-x: hidden;
+}
+
+body {
+  background-color: var(--background);
+  color: var(--text);
+  font-family: 'Alata', 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif !important;
+}
 
 :root {
-
-  font-family: 'Alata', 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif !important;
-  line-height: 1.5;
-
   --background: #F6F5F0;
   --text: #333333;
 
@@ -17,7 +23,6 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-
 }
 
 /* fonts */
@@ -31,15 +36,6 @@
 
 /* Importar Poppins desde Google Fonts con fallback */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
-
-
-
-
-body {
-  background-color: var(--background);
-  color: var(--text);
-  font-family: 'Alata', 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif !important;
-}
 
 /* Clase para evitar traducción automática */
 .no-translate {

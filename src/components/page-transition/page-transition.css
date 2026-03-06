@@ -1,0 +1,86 @@
+.page-transition-wrapper {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  overflow: hidden;
+}
+
+.page-transition-layer {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  min-height: 100vh;
+  overflow: hidden;
+}
+
+.page-transition-layer.layer-current {
+  position: relative;
+  background-color: var(--background);
+}
+
+.page-transition-layer.layer-prev {
+  z-index: 1;
+}
+
+.page-transition-layer.layer-next {
+  z-index: 2;
+  will-change: clip-path, transform;
+  background-color: var(--background);
+}
+
+.page-transition-layer.layer-next.going-to-page {
+  clip-path: inset(0 0 0 100%);
+}
+
+.page-transition-layer.layer-next.mode-back.going-to-page {
+  clip-path: inset(0 100% 0 0);
+}
+
+.page-transition-layer.layer-next.going-home {
+  clip-path: inset(100% 0 0 0);
+}
+
+.page-transition-layer.layer-next.transitioning.going-to-page {
+  animation: revealFromRight 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.page-transition-layer.layer-next.mode-back.transitioning.going-to-page {
+  animation: revealFromLeft 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.page-transition-layer.layer-next.transitioning.going-home {
+  animation: revealFromTop 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes revealFromRight {
+  0% {
+    clip-path: inset(0 0 0 100%);
+    transform: translateX(24px);
+  }
+  100% {
+    clip-path: inset(0 0 0 0);
+    transform: translateX(0);
+  }
+}
+
+@keyframes revealFromLeft {
+  0% {
+    clip-path: inset(0 100% 0 0);
+    transform: translateX(-24px);
+  }
+  100% {
+    clip-path: inset(0 0 0 0);
+    transform: translateX(0);
+  }
+}
+
+@keyframes revealFromTop {
+  0% {
+    clip-path: inset(100% 0 0 0);
+    transform: translateY(-24px);
+  }
+  100% {
+    clip-path: inset(0 0 0 0);
+    transform: translateY(0);
+  }
+}
