@@ -4,7 +4,7 @@ export const dbProjects = [
         name: 'Espacio AKAAL',
         description: 'Proyecto web',
         description2: 'Proyecto web para Espacio AKAAL, un espacio de yoga, artesanía, viajes  y retiros.',
-        skills: ['React', 'Node.js', 'Figma'],
+        skills: ['Figma', 'Vite', 'React'],
         link: 'https://www.espacioakaal.com/',
         images: ['https://res.cloudinary.com/dhwd1b4be/image/upload/v1772130937/mockup_njcky2.png', 'https://res.cloudinary.com/dhwd1b4be/image/upload/v1772135894/mockup_zg8fvp.png','https://res.cloudinary.com/dhwd1b4be/image/upload/v1772135889/mockup-8_wnuotr.png', 'https://res.cloudinary.com/dhwd1b4be/image/upload/v1772655275/mockup_2_x5aics.png', 'https://res.cloudinary.com/dhwd1b4be/image/upload/v1772135872/mockup-5_joljvb.png','https://res.cloudinary.com/dhwd1b4be/image/upload/v1772135884/mockup-7_mizwhz.png', 'https://res.cloudinary.com/dhwd1b4be/image/upload/v1772135864/mockup-4_vqukds.png', 'https://res.cloudinary.com/dhwd1b4be/image/upload/v1772135860/mockup-3_hygrhx.png', 'https://res.cloudinary.com/dhwd1b4be/image/upload/v1772135834/mockup-2_qmlaed.png'  ],
         frontPage:'https://res.cloudinary.com/dhwd1b4be/image/upload/v1772129542/portada-akaal_pljqlf.png'
@@ -15,7 +15,7 @@ export const dbProjects = [
         name: 'La Mesita',
         description: 'Landing page',
         description2: 'Landing page para La Mesita, un puesto de ultramarinos en el Mercado de Jesús, Valencia.',
-        skills: ['React', 'Figma'],
+        skills: ['Figma', 'Vite', 'React'],
         link: 'https://www.lamesita.es/',
         images: ['https://res.cloudinary.com/dhwd1b4be/image/upload/v1772136332/Frame_88_bkoiu1.png', 'https://res.cloudinary.com/dhwd1b4be/image/upload/v1772136333/Frame_89_y4p6nw.png', 'https://res.cloudinary.com/dhwd1b4be/image/upload/v1772136329/Frame_90_zjojyv.png', 'https://res.cloudinary.com/dhwd1b4be/image/upload/v1772656074/Frame_90_dmwihb.png','https://res.cloudinary.com/dhwd1b4be/image/upload/v1772656074/Frame_89_yufayb.png', 'https://res.cloudinary.com/dhwd1b4be/image/upload/v1772656074/Frame_92_dc32cx.png'  ],
         frontPage:'https://res.cloudinary.com/dnz96cick/image/upload/v1762086153/LAMESITA_1_b102ar.jpg'
@@ -25,7 +25,7 @@ export const dbProjects = [
         name: 'MODE STUDIO',
         description: 'Portfolio',
         description2: 'Portfolio web para MODE STUDIO, un estudio de arquitectura y diseño en Valencia.',
-        skills: ['React', 'Figma'],
+        skills: ['Figma', 'Vite', 'React'],
         link: 'https://www.mode-studio.es/',
         images: ['https://res.cloudinary.com/dhwd1b4be/image/upload/v1772531382/Frame_95_buikxr.png','https://res.cloudinary.com/dhwd1b4be/image/upload/v1772531381/Frame_96_saj5vl.png','https://res.cloudinary.com/dhwd1b4be/image/upload/v1772531382/Frame_98_bincsk.png','https://res.cloudinary.com/dhwd1b4be/image/upload/v1772531382/Frame_97_gcw39f.png',  'https://res.cloudinary.com/dhwd1b4be/image/upload/v1772531382/Frame_98_bincsk.png', 'https://res.cloudinary.com/dhwd1b4be/image/upload/v1772531382/Frame_99_reende.png'  ],
         frontPage:'https://res.cloudinary.com/dhwd1b4be/image/upload/v1772531631/06-Bajo-MODE-web_pkdh66.jpg'
@@ -35,7 +35,7 @@ export const dbProjects = [
         name: 'SOUNDsLIKE',
         description: 'Web App full stack',
         description2: 'Web App de música donde puedes buscar canciones por género y crear listas de reproducción.',
-        skills: ['React', 'Node.js', 'Figma'],
+        skills: ['Figma', 'Vite', 'React', 'Node.js', 'Express', 'MongoDB'],
         link: 'https://soundslike-frontend.vercel.app/',
         images: ['https://res.cloudinary.com/dhwd1b4be/image/upload/v1772527036/Frame_87_no2yd6.png', 'https://res.cloudinary.com/dhwd1b4be/image/upload/v1772784192/Frame_88_kk0t0c.png', 'https://res.cloudinary.com/dhwd1b4be/image/upload/v1772527035/Frame_90_tucx5b.png', 'https://res.cloudinary.com/dhwd1b4be/image/upload/v1772527035/Frame_94_lrldhx.png', 'https://res.cloudinary.com/dhwd1b4be/image/upload/v1772527035/Frame_93_frj45v.png', 'https://res.cloudinary.com/dhwd1b4be/image/upload/v1772527035/Frame_92_ypof3s.png', 'https://res.cloudinary.com/dhwd1b4be/image/upload/v1772527035/Frame_89_wejrlz.png', 'https://res.cloudinary.com/dhwd1b4be/image/upload/v1772527035/Frame_91_kmcduc.png'],
         frontPage:'https://res.cloudinary.com/dhwd1b4be/image/upload/v1772129555/portada-soundslike_mli21z.png'
