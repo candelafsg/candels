@@ -45,7 +45,7 @@ export const dbProjects = [
         id: 5,
         name: 'Mattura',
         description: 'Proyecto de Diseño UX/UI',
-        description2: 'Proyecto de Diseño UX/UI, pasando por todas las fases: Empatizar, definir, idear, prototipar y probar.',
+        description2: 'Proyecto de Diseño UX/UI, pasando por todas las fases: Empatizar, definir, idear, prototipar y testear.',
         skills: ['Figma', 'FigJam', 'UX Research', 'Design Thinking', 'Design System','Midjourney', 'Maze'],
         link: false,
         images: [ 'https://res.cloudinary.com/dhwd1b4be/image/upload/v1772657612/Frame_100_dw7isg.png','https://res.cloudinary.com/dhwd1b4be/image/upload/v1772657612/Frame_101_j6ifdc.png','https://res.cloudinary.com/dhwd1b4be/image/upload/v1772657613/Frame_102_ptsknk.png','https://res.cloudinary.com/dhwd1b4be/image/upload/v1772657612/Frame_103_gnvhlg.png', 'https://res.cloudinary.com/dhwd1b4be/image/upload/v1772657613/Frame_104_sospos.png', 'https://res.cloudinary.com/dhwd1b4be/image/upload/v1772657613/Frame_105_lcpw1x.png', 'https://res.cloudinary.com/dhwd1b4be/image/upload/v1772657613/Frame_106_sae2so.png', 'https://res.cloudinary.com/dhwd1b4be/image/upload/v1772657613/Frame_107_ltckxt.png', 'https://res.cloudinary.com/dhwd1b4be/image/upload/v1772657613/Frame_108_ff2ost.png', 'https://res.cloudinary.com/dhwd1b4be/image/upload/v1772657613/Frame_110_iwrmjz.png', 'https://res.cloudinary.com/dhwd1b4be/image/upload/v1772657614/Frame_109_oyv1gl.png', 'https://res.cloudinary.com/dhwd1b4be/image/upload/v1772657614/Frame_111_vilhz0.png'    ],

@@ -204,7 +204,7 @@ const Project = () => {
             <div className="project-header">
               <ul className="project-ul">
                 <li className="project-li" onClick={() => handleSectionChange('skills')}>SKILLS</li>
-                <li className="project-li" onClick={() => handleSectionChange('link')}>LINK</li>
+                {project.link && <li className="project-li" onClick={() => handleSectionChange('link')}>LINK</li>}
               </ul>
             </div>
 
