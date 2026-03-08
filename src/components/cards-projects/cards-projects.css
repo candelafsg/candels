@@ -18,6 +18,10 @@
    
 }
 
+.project-info{
+    width: 100%;
+}
+
 .project-link {
    display: flex;
    align-items: center;
