@@ -12,8 +12,19 @@ export const dbProjects = [
     },
     {
         id: 2,
-        name: 'La Mesita',
+        name: 'Proyecto Bouzas (Vigo)',
         description: 'Landing page',
+        description2: 'Diseño de wireframes de alta fidelidad para una app que permite conocer el pueblo de Bouzas (Vigo).',
+        skills: ['Figma', 'Gemini'],
+        link: false ,
+        images: ['https://res.cloudinary.com/dhwd1b4be/image/upload/v1773086608/PANTALLA_INICIO_clktpm.png', 'https://res.cloudinary.com/dhwd1b4be/image/upload/v1773086608/PANTALLA_INICIO_clktpm.png','https://res.cloudinary.com/dhwd1b4be/image/upload/v1773086607/MERCADO-MANUAL_aktyfi.png', 'https://res.cloudinary.com/dhwd1b4be/image/upload/v1773086607/MERCADO-AUTO_al9mxj.png','https://res.cloudinary.com/dhwd1b4be/image/upload/v1773086608/MENU_unj4ff.png',  'https://res.cloudinary.com/dhwd1b4be/image/upload/v1773086607/MUSEO_DIGITAL_f0aqi1.png', 'https://res.cloudinary.com/dhwd1b4be/image/upload/v1773086608/VINCULACION_EXTERNA_jlu93b.png', 'https://res.cloudinary.com/dhwd1b4be/image/upload/v1773086608/PASEO-AUTO_oufryl.png',  'https://res.cloudinary.com/dhwd1b4be/image/upload/v1773086607/IGLESIA-AUTO_xtdjcm.png', 'https://res.cloudinary.com/dhwd1b4be/image/upload/v1773086607/MENU-1_zbddo2.png', 'https://res.cloudinary.com/dhwd1b4be/image/upload/v1773086608/VISION_INTERNA_wnffu8.png'  , 'https://res.cloudinary.com/dhwd1b4be/image/upload/v1773086608/VISION_INTERNA-1_sepmb8.png', 'https://res.cloudinary.com/dhwd1b4be/image/upload/v1773086607/DETALLE_PUNTO_DE_INTERES_kte1l7.png','https://res.cloudinary.com/dhwd1b4be/image/upload/v1773086607/DETALLE_PUNTO_DE_INTERES-1_un3eec.png'  ],
+        frontPage:'https://res.cloudinary.com/dhwd1b4be/image/upload/v1773086950/Gemini_Generated_Image_hjrzrkhjrzrkhjrz_1_1_n08otb.png'
+    },
+
+     {
+        id: 3,
+        name: 'La Mesita ',
+        description: 'App móvil',
         description2: 'Diseño y desarrollo de la landing page para La Mesita, un puesto de ultramarinos ubicado en el Mercado de Jesús (Valencia).',
         skills: ['Figma', 'Vite', 'React'],
         link: 'https://www.lamesita.es/',
@@ -21,7 +32,7 @@ export const dbProjects = [
         frontPage:'https://res.cloudinary.com/dnz96cick/image/upload/v1762086153/LAMESITA_1_b102ar.jpg'
     },
       {
-        id: 3,
+        id: 4,
         name: 'MODE STUDIO',
         description: 'Portfolio profesional',
         description2: 'Diseño y desarrollo del portfolio web para MODE STUDIO, un estudio de arquitectura y diseño con sede en Valencia.',
@@ -31,7 +42,7 @@ export const dbProjects = [
         frontPage:'https://res.cloudinary.com/dhwd1b4be/image/upload/v1772531631/06-Bajo-MODE-web_pkdh66.jpg'
     },
     {
-        id: 4,
+        id: 5,
         name: 'SOUNDsLIKE',
         description: 'Aplicación web Full Stack',
         description2: 'Aplicación web de música que permite explorar canciones por género y crear listas de reproducción personalizadas.',
@@ -42,7 +53,7 @@ export const dbProjects = [
     },
 
     {
-        id: 5,
+        id: 6,
         name: 'Mattura',
         description: 'Proyecto UX/UI',
         description2: 'Proyecto completo de diseño UX/UI siguiendo la metodología Design Thinking: investigación, ideación, prototipado y testeo.',
