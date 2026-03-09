@@ -12,8 +12,8 @@ export const dbProjects = [
     },
     {
         id: 2,
-        name: 'Proyecto Bouzas (Vigo)',
-        description: 'Landing page',
+        name: 'Bouzas (Vigo)',
+        description: 'App móvil',
         description2: 'Diseño de wireframes de alta fidelidad para una app que permite conocer el pueblo de Bouzas (Vigo).',
         skills: ['Figma', 'Gemini'],
         link: false ,
@@ -24,7 +24,7 @@ export const dbProjects = [
      {
         id: 3,
         name: 'La Mesita ',
-        description: 'App móvil',
+        description: 'Landing Page',
         description2: 'Diseño y desarrollo de la landing page para La Mesita, un puesto de ultramarinos ubicado en el Mercado de Jesús (Valencia).',
         skills: ['Figma', 'Vite', 'React'],
         link: 'https://www.lamesita.es/',
