@@ -19,6 +19,8 @@ body {
   --background: #F6F5F0;
   --text: #333333;
 
+  --secondary: #FF7D85;
+
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;

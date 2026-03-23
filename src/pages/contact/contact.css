@@ -521,6 +521,7 @@ body:has(.contact-form-overlay:not(.closing)) {
         display: flex;
         flex-direction: column;
         align-items: flex-start;
+        margin-top: 2.5rem;
     }
 
     .contact-content-wrapper{

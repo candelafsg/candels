@@ -148,6 +148,7 @@
 
     .project-description.show {
         opacity: 1;
+         color: var(--secondary);
     }
 
     .portf-list-desk li {
@@ -159,6 +160,7 @@
 
     .portf-list-desk li:hover {
         opacity: 0.7;
+       
     }
 
     .portfolio-list-desktop {
@@ -186,7 +188,7 @@
 
     .close-btn {
         position: absolute;
-        top: 10%;
+        top: 5%;
         left: 4rem;
         background: none;
         border: none;
@@ -204,6 +206,7 @@
 
     .close-btn:hover {
         scale: 0.98;
+        background: none;
     }
 
     .project-content {
