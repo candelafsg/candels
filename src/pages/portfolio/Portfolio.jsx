@@ -1,5 +1,4 @@
 import './portfolio.css'
-import { CustomTitles } from '../../components/custom-titles/CustomTitles'
 import { dbProjects } from '../../db/db'
 import CardsProjects from '../../components/cards-projects/CardsProjects'
 import {Header} from '../../components/header/Header'

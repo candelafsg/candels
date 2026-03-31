@@ -166,7 +166,7 @@ const Contact = () => {
     const contactOptions = [
         { value: 'mailto:infocandels@gmail.com', label: 'EMAIL' },
 
-        { value: 'https://www.instagram.com/candelssssssweb/', label: 'INSTAGRAM' },
+        { value: 'https://www.instagram.com/candelsss__/', label: 'INSTAGRAM' },
         { value: 'https://wa.me/34654068208', label: 'WHATSAPP' }
     ]
     return (
@@ -386,7 +386,7 @@ const Contact = () => {
                                             <div className="direct-content">
                                                 <a href={option.value} className="direct-p" target="_blank" rel="noopener noreferrer">
                                                     {option.label === 'EMAIL' ? 'infocandels@gmail.com' :
-                                                        option.label === 'INSTAGRAM' ? '@candelssssssweb' :
+                                                        option.label === 'INSTAGRAM' ? '@candelssss__' :
                                                             '(+34) 654 068 208'}
                                                 </a>
                                                 <span className="direct-icon"><ArrowUpRight size={20} /></span>

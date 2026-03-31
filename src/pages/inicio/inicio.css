@@ -18,16 +18,36 @@
     gap: 4rem;
 }
 
+.logo-container .logo-enter-cta {
+    pointer-events: none;
+}
+
+.logo-container .logo-enter-cta[style*="opacity: 1"],
+.logo-container .logo-enter-cta[style*="opacity:1"] {
+    pointer-events: auto;
+}
+
+.logo-container svg .logo-letter,
+.logo-container svg .logo-edge-dot {
+    transform-box: fill-box;
+}
+
 /* Animación de rotación para los círculos de la letra A */
 .logo-container svg .letter-a {
-    animation: rotateBlock 2s ease-in-out infinite;
     transform-origin: 78px 22px;
+}
+
+.logo-container.rotate-a svg .letter-a {
+    animation: rotateBlock 2s ease-in-out infinite;
 }
 
 /* Animación de rotación para los círculos de la letra D */
 .logo-container svg .letter-d {
-    animation: rotateBlock 2s ease-in-out infinite;
     transform-origin: 168px 30px;
+}
+
+.logo-container.rotate-d svg .letter-d {
+    animation: rotateBlock 2s ease-in-out infinite;
 }
 
 /* Contenedor para los círculos de la letra A */
@@ -35,8 +55,14 @@
 .logo-container svg .letter-a.dot-2,
 .logo-container svg .letter-a.dot-3,
 .logo-container svg .letter-a.dot-4 {
-    animation: rotateBlockA 2s ease-in-out infinite;
     transform-origin: 78px 22px;
+}
+
+.logo-container.rotate-a svg .letter-a.dot-1,
+.logo-container.rotate-a svg .letter-a.dot-2,
+.logo-container.rotate-a svg .letter-a.dot-3,
+.logo-container.rotate-a svg .letter-a.dot-4 {
+    animation: rotateBlockA 2s ease-in-out infinite;
 }
 
 /* Contenedor para los círculos de la letra D */
@@ -44,8 +70,14 @@
 .logo-container svg .letter-d.dot-2,
 .logo-container svg .letter-d.dot-3,
 .logo-container svg .letter-d.dot-4 {
-    animation: rotateBlockD 2s ease-in-out infinite;
     transform-origin: 168px 30px;
+}
+
+.logo-container.rotate-d svg .letter-d.dot-1,
+.logo-container.rotate-d svg .letter-d.dot-2,
+.logo-container.rotate-d svg .letter-d.dot-3,
+.logo-container.rotate-d svg .letter-d.dot-4 {
+    animation: rotateBlockD 2s ease-in-out infinite;
 }
 
 /* Animación de rotación en bloque para letra A */
